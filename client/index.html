@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>📚 Books List</h2>
+
+<table border="1">
+<thead>
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Author</th>
+<th>Available</th>
+</tr>
+</thead>
+
+<tbody id="data"></tbody>
+</table>
+
+<script>
+
+fetch('https://animated-space-doodle-69vqr9w4vrjq2rvr6-3000.app.github.dev/books')
+.then(res => res.json())
+.then(data => {
+    let output = '';
+
+    data.forEach(book => {
+        output += `
+            <tr>
+                <td>${book.id}</td>
+                <td>${book.title}</td>
+                <td>${book.author}</td>
+                <td>${book.available}</td>
+            </tr>
+        `;
+    });
+
+    document.getElementById('data').innerHTML = output;
+})
+.catch(err => console.log(err));
+
+</script>
+
+</body>
+</html>
